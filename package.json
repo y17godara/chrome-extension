@@ -1,7 +1,7 @@
 {
-  "name": "next-chrome-extension-starter",
+  "name": "content-creators-extension",
   "version": "0.0.1",
-  "description": "[Updated] New Next.js Chrome Extension Starter, Demo Example by y17godara. https://github.com/y17godara/next-chrome-extension-starter",
+  "description": "A Next.js Chrome Extension for Content Creators by y17godara",
   "main": "index.js",
   "scripts": {
     "build": "npm run prep",
@@ -16,8 +16,10 @@
     "extension",
     "starter",
     "y17godara",
-    "nextjs-chrome-extension-starter",
-    "next-chrome-extension-starter"
+    "content-creators",
+    "react",
+    "youtube",
+    "twitch"
   ],
   "author": "y17godara",
   "license": "ISC",
