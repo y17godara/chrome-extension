@@ -19,10 +19,10 @@ export const GlobalStateProvider = ({ children }) => {
   useEffect(() => {
     const loadState = async () => {
       try {
-        const result = await chrome.storage.local.get(["appState"]);
-        if (result.appState) {
-          setSatus(result.appState);
-          setActivePage(result.appState.activePage || "index");
+        const result = await chrome.storage.local.get(["y17godaraContentCreators"]);
+        if (result.y17godaraContentCreators) {
+          setSatus(result.y17godaraContentCreators);
+          setActivePage(result.y17godaraContentCreators.activePage || "index");
         }
       } catch (error) {
         console.error("Error loading state:", error);
@@ -53,7 +53,7 @@ export const GlobalStateProvider = ({ children }) => {
   useEffect(() => {
     const saveState = async () => {
       try {
-        await chrome.storage.local.set({ appState: { ...satus, activePage } });
+        await chrome.storage.local.set({ y17godaraContentCreators: { ...satus, activePage } });
         console.log("State saved");
       } catch (error) {
         console.error("Error saving state:", error);
