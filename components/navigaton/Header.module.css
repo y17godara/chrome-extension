@@ -1,12 +1,29 @@
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 5px;
-    width: 100%;
-    font-size: medium;
-    background-color: #8b0d0d;
-    color: white;
-    font-size: small;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: medium;
+  background-color: #191b1d;
+  padding: 4px 2px;
+}
+
+.headerText {
+  color: whitesmoke;
+  text-align: center;
+  font-size: small;
+  margin: 0;
+  padding: 0;
+}
+
+.headerLink {
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  font-size: small;
 }
