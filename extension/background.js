@@ -1,0 +1,1 @@
+chrome.runtime.setUninstallURL('https://improvedtube.com/uninstalled');

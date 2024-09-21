@@ -10,7 +10,10 @@
     "48": "/icons/icon48.png",
     "192": "/icons/icon192.png"
   },
-  "permissions": [],
+  "permissions": ["contextMenus", "storage"],
+  "optional_permissions": ["downloads"],
+  "host_permissions": ["https://www.youtube.com/*"],
+  "offline_enabled": true,
   "web_accessible_resources": [
     {
       "resources": ["index.html"],
@@ -23,8 +26,11 @@
       "js": ["inject.js"]
     }
   ],
-  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
   }
 }

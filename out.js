@@ -3,15 +3,26 @@ const fsExtra = require('fs-extra');
 const glob = require('glob');
 const path = require('path');
 
+// Create the 'extension' folder if it doesn't exist
+const extensionFolder = path.join('extension');
+if (!fs.existsSync(extensionFolder)) {
+  fs.mkdirSync(extensionFolder);
+}
+
+// Update HTML files in the 'extension' folder
 const files = glob.sync('out/**/*.html');
 files.forEach((file) => {
   const content = fs.readFileSync(file, 'utf-8');
   const modifiedContent = content.replace(/\/_next/g, './next');
-  fs.writeFileSync(file, modifiedContent, 'utf-8');
+
+  // Write modified content to the 'extension' folder
+  const newFilePath = path.join(extensionFolder, path.basename(file));
+  fs.writeFileSync(newFilePath, modifiedContent, 'utf-8');
 });
 
+// Copy and remove the '_next' directory
 const sourcePath = path.join('out', '_next');
-const destinationPath = path.join('out', 'next');
+const destinationPath = path.join(extensionFolder, 'next');
 
 fsExtra.copy(sourcePath, destinationPath, (err) => {
   if (err) {
