@@ -1,7 +1,7 @@
 import { useGlobalState } from "../../pages/index";
 
 export default function Popup() {
-  const { activePage, navigateToPage, satus, setSatus } = useGlobalState();
+  const { activePage, navigateToPage, satus, setSatus, currentTabUrl, isExtension } = useGlobalState();
   return (
     <div className="content">
       {activePage === "index" && (
@@ -31,6 +31,13 @@ export default function Popup() {
             >
                 Toggle Version
             </button>
+        </div>
+      )}
+            {isExtension && currentTabUrl && (
+        <div>
+          <h2>Current Tab URL:</h2>
+          <p>{currentTabUrl}</p>
+          {currentTabUrl.includes("youtube.com") && <p>You're on YouTube!</p>}
         </div>
       )}
       <div>

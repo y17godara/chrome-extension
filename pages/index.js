@@ -9,6 +9,7 @@ const isExtension = typeof chrome !== 'undefined' && chrome.runtime && chrome.ru
 
 export const GlobalStateProvider = ({ children }) => {
   const [activePage, setActivePage] = useState("index");
+  const [currentTabUrl, setCurrentTabUrl] = useState("");
   const [satus, setSatus] = useState({
     components: {},
     events: { data: {} },
@@ -17,7 +18,7 @@ export const GlobalStateProvider = ({ children }) => {
     settings: { showVersion: true }
   });
 
-  // Load all state from Chrome storage on component mount
+  // Load all state from Chrome storage and get current tab URL on component mount
   useEffect(() => {
     if (!isExtension) return;
 
@@ -33,7 +34,19 @@ export const GlobalStateProvider = ({ children }) => {
       }
     };
 
+    const getCurrentTabUrl = async () => {
+      try {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (tab && tab.url) {
+          setCurrentTabUrl(tab.url);
+        }
+      } catch (error) {
+        console.error("Error getting current tab URL:", error);
+      }
+    };
+
     loadState();
+    getCurrentTabUrl();
 
     // Set up the storage change listener
     const storageChangeListener = (changes, namespace) => {
@@ -47,9 +60,19 @@ export const GlobalStateProvider = ({ children }) => {
 
     chrome.storage.onChanged.addListener(storageChangeListener);
 
-    // Clean up the listener when the component unmounts
+    // Set up tab change listener
+    const tabChangeListener = (tabId, changeInfo, tab) => {
+      if (changeInfo.status === 'complete' && tab.active) {
+        setCurrentTabUrl(tab.url || "");
+      }
+    };
+
+    chrome.tabs.onUpdated.addListener(tabChangeListener);
+
+    // Clean up the listeners when the component unmounts
     return () => {
       chrome.storage.onChanged.removeListener(storageChangeListener);
+      chrome.tabs.onUpdated.removeListener(tabChangeListener);
     };
   }, []);
 
@@ -87,7 +110,10 @@ export const GlobalStateProvider = ({ children }) => {
     satus,
     setSatus,
     updateSettings,
-  }), [activePage, navigateToPage, satus, updateSettings]);
+    currentTabUrl,
+    currentTabUrl,
+    isExtension
+  }), [activePage, navigateToPage, satus, updateSettings, currentTabUrl, currentTabUrl, isExtension]);
 
   return (
     <GlobalStateContext.Provider value={contextValue}>
