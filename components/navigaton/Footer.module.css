@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: medium;
+  background-color: #191b1d;;
+  padding: 2px 2px;
+}
+
+.footerText {
+  color: whitesmoke;
+  text-align: center;
+  font-size: small;
+  margin: 0;
+  padding: 0;
+}
+
+.footerLink {
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  font-size: small;
+}
+
+.footerLink img{
+  border-radius: 10px;
+  overflow: hidden;
+}

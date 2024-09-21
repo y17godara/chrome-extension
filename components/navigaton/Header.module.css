@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    width: 100%;
+    font-size: medium;
+    background-color: #8b0d0d;
+    color: white;
+    font-size: small;
+}

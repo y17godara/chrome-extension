@@ -1,0 +1,31 @@
+{
+  "name": "next-chrome-extension-starter",
+  "version": "0.0.1",
+  "description": "[Updated] New Next.js Chrome Extension Starter, Demo Example by y17godara. https://github.com/y17godara/next-chrome-extension-starter",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run prep",
+    "prep": "npm run exp && node out.js",
+    "exp": "next build && next export",
+    "run": "next start",
+    "dev": "next dev"
+  },
+  "keywords": [
+    "next",
+    "chrome",
+    "extension",
+    "starter",
+    "y17godara",
+    "nextjs-chrome-extension-starter",
+    "next-chrome-extension-starter"
+  ],
+  "author": "y17godara",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.0",
+    "next": "^13.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
