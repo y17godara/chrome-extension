@@ -5,6 +5,8 @@ import Popup from "../components/core/popup";
 
 const GlobalStateContext = createContext();
 
+const isExtension = typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id;
+
 export const GlobalStateProvider = ({ children }) => {
   const [activePage, setActivePage] = useState("index");
   const [satus, setSatus] = useState({
@@ -17,6 +19,8 @@ export const GlobalStateProvider = ({ children }) => {
 
   // Load all state from Chrome storage on component mount
   useEffect(() => {
+    if (!isExtension) return;
+
     const loadState = async () => {
       try {
         const result = await chrome.storage.local.get(["y17godaraContentCreators"]);
@@ -51,6 +55,7 @@ export const GlobalStateProvider = ({ children }) => {
 
   // Save state to Chrome storage whenever it changes
   useEffect(() => {
+    if (!isExtension) return;
     const saveState = async () => {
       try {
         await chrome.storage.local.set({ y17godaraContentCreators: { ...satus, activePage } });
