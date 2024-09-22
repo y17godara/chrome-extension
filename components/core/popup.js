@@ -37,7 +37,7 @@ export default function Popup() {
         <div>
           <h2>Current Tab URL:</h2>
           <p>{currentTabUrl}</p>
-          {currentTabUrl.includes("youtube.com") && <p>You're on YouTube!</p>}
+          {currentTabUrl.includes(".youtube.com") && <p>You're on YouTube!</p>}
         </div>
       )}
       <div>

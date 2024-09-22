@@ -1,0 +1,9 @@
+tp-yt-paper-item.custom-item {
+    color: #ff0000; /* Custom red color */
+    cursor: pointer;
+  }
+  
+  tp-yt-paper-item.custom-item:hover {
+    background-color: #f5f5f5;
+  }
+  

@@ -22,8 +22,9 @@
   ],
   "content_scripts": [
     {
-      "matches": ["https://*/*", "http://*/*"],
-      "js": ["inject.js"]
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["inject/index.js"],
+      "css": ["inject/styles.css"]
     }
   ],
   "action": {

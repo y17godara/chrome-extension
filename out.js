@@ -4,7 +4,7 @@ const glob = require('glob');
 const path = require('path');
 
 // Create the 'extension' folder if it doesn't exist
-const extensionFolder = path.join('extension');
+const extensionFolder = path.join('out');
 if (!fs.existsSync(extensionFolder)) {
   fs.mkdirSync(extensionFolder);
 }
